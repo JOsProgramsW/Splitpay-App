@@ -9,4 +9,6 @@ public class AppDbContext : DbContext
 
     public DbSet<Grupo> Grupos => Set<Grupo>();
     public DbSet<Usuario> Usuarios => Set<Usuario>();
+    public DbSet<GastoComun> GastosComunes { get; set; }
+    public DbSet<CuotaIndividual> CuotasIndividuales { get; set; }
 }

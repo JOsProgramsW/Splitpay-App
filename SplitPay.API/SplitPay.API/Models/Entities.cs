@@ -22,3 +22,31 @@ public class Usuario
     [Required] public string PasswordHash { get; set; } = string.Empty;
     [Required, MaxLength(20)] public string Rol { get; set; } = "Miembro"; // "Admin" o "Miembro"
 }
+
+[Table("GastosComunes")]
+public class GastoComun
+{
+    [Key]
+    public int GastoId { get; set; }
+    public int GrupoId { get; set; }
+    public int CreadoPorId { get; set; }
+    public string Concepto { get; set; } = string.Empty;
+    public string? Descripcion { get; set; }
+
+    [Column(TypeName = "decimal(10,2)")]
+    public decimal MontoTotal { get; set; }
+    public DateTime FechaGasto { get; set; } = DateTime.Now;
+}
+
+[Table("CuotasIndividuales")]
+public class CuotaIndividual
+{
+    [Key]
+    public int CuotaId { get; set; }
+    public int GastoId { get; set; }
+    public int UsuarioId { get; set; }
+
+    [Column(TypeName = "decimal(10,2)")]
+    public decimal MontoAsignado { get; set; }
+    public string EstadoPago { get; set; } = "Pendiente";
+}
